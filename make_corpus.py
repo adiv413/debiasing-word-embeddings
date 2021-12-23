@@ -34,8 +34,9 @@ def process_article(args):
     return result, title, pageid
 
 
-class MyWikiCorpus(WikiCorpus):
-    def __init__(self, fname, processes=None, lemmatize=utils.has_pattern(), dictionary=None, filter_namespaces=('0',)):
+class MyWikiCorpus(WikiCorpus): 
+    # have a dummy value in the dictionary field so that dictionary creation isnt started, which takes a VERY long time
+    def __init__(self, fname, processes=None, lemmatize=utils.has_pattern(), dictionary={'x' : 1}, filter_namespaces=('0',)):
         WikiCorpus.__init__(self, fname, processes, lemmatize, dictionary, filter_namespaces)
 
     def get_texts(self):
